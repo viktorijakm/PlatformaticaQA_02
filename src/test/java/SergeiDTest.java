@@ -4,10 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class SergeiDTest {
 
@@ -18,7 +15,7 @@ public class SergeiDTest {
 
 	private WebDriver driver;
 
-	@BeforeTest
+	@BeforeMethod
 	public void beforeTest() {
 		driver = new ChromeDriver();
 	}
@@ -35,7 +32,7 @@ public class SergeiDTest {
 		Assert.assertEquals(result.getText(), "Jess Glynne - 123 [Official Live Video] - YouTube");
 	}
 
-	@AfterTest
+	@AfterMethod
 	public void afterTest() {
 		driver.quit();
 	}
