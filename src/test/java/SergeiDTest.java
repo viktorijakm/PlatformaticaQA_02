@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class SergeiD {
+public class SergeiDTest {
 
 	@BeforeClass
 	public void before() {
