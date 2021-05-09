@@ -32,7 +32,7 @@ public class GroupBugBustersTest {
         }
 
         @Test
-        public void getBtcPrice() throws InterruptedException {
+        public void AndreyTeterinTest() throws InterruptedException {
             driver.get("https://www.btcsatoshi.com/");
             Thread.sleep(3000);
             WebElement price = driver.findElement(By.xpath("//label[@id='oneBitcoin']"));
