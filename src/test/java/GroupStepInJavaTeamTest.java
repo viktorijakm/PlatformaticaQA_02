@@ -22,21 +22,18 @@ public class GroupStepInJavaTeamTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
     }
 
     @Test
-    public void kirillRazzhigaev() throws InterruptedException {
+    public void kirillRazzhigaevTest() {
 
         driver.get("https://www.selenium.dev/");
         driver.findElement(By.xpath("//nav/a[3]")).click();
-        Thread.sleep(2000);
         driver.findElement(By.id("search-by")).sendKeys("element");
-        Thread.sleep(2000);
         driver.findElement(By.xpath("//div[@data-title=\"Web element\"]")).click();
         Assert.assertEquals(driver.findElement(By.tagName("h1")).getText(), "Web element");
-        Thread.sleep(5000);
     }
 
     @Test
