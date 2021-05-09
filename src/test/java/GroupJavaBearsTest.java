@@ -7,10 +7,12 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class GroupJavaBearsTest {
+
     @BeforeClass
     public void before(){
         WebDriverManager.chromedriver().setup();
     }
+
     private WebDriver driver;
     @BeforeMethod
     public void beforeTest(){
@@ -27,8 +29,18 @@ public class GroupJavaBearsTest {
         WebElement res = driver.findElement(By.xpath("//*[@id=\"r1-0\"]/div/h2/a[1]"));
         Assert.assertEquals(res.getText(), "Panda Express | A Fast Casual Chinese Restaurant | Panda ...");
     }
-    @AfterMethod
-    public void  afterTest(){
-        driver.quit();
-    }
+
+	@Test
+	public void sergeyKuznetsov() {
+		driver.get("https://elibrary.unatlib.ru/");
+		WebElement input = driver.findElement(By.className("prompt"));
+		input.sendKeys("Пушкин\n");
+		WebElement result = driver.findElement(By.className("search-stats"));
+		Assert.assertNotEquals(result.getText(), "No Results!");
+	}
+
+	@AfterMethod
+	public void afterTest() {
+		driver.quit();
+	}
 }
