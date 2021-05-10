@@ -60,8 +60,9 @@ public class sergeoReviewTest {
         Thread.sleep(2000);
         textName.sendKeys("Smith");
         Thread.sleep(2000);
-        driver.findElement(By.xpath("//input[@name='gender'][@value='Male']")).click();
-        Thread.sleep(2000);
+        //first way
+//        driver.findElement(By.xpath("//input[@name='gender'][@value='Male']")).click();
+//        Thread.sleep(2000);
         /*
         Collection with Tests
          */

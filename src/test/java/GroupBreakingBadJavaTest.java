@@ -31,6 +31,34 @@ public class GroupBreakingBadJavaTest {
         Assert.assertEquals(elem.getText(), "Soccer");
     }
 
+    @Test
+    public void dariaRazzhigaevaTest() throws InterruptedException {
+        driver.get("https://www.airbnb.com/");
+
+        WebElement input = driver.findElement(By.id("bigsearch-query-detached-query"));
+        input.sendKeys("Tokyo");
+        driver.findElement(By.className("_m9v25n")).click();
+
+        Thread.sleep(5000);
+
+        WebElement result = driver.findElement(By.className("_14i3z6h"));
+        Assert.assertTrue(result.isDisplayed());
+    }
+    @Test
+    public void vitaliiArtemenkoFoodTest() {
+        driver.get("https://lightlife.com/");
+        driver.findElement(By.xpath("//a[text()='Our Food'][1]")).click();
+        WebElement food = driver.findElement(By.tagName("h1"));
+        Assert.assertEquals(food.getText(), "Our Food");
+    }
+
+    @Test
+    public void evgeniyTMainGitCommandTest() {
+        driver.get("https://use-web.ru/news.php?id=138&tid=3");
+        WebElement result = driver.findElement(By.xpath("//h2[text()= 'Основные Git команды. ']"));
+
+        Assert.assertEquals(result.getText(), "Основные Git команды.");
+    }
 
     @AfterMethod
     public void afterTest() {

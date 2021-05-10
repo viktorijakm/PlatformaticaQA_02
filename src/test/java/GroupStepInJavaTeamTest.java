@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class GroupStepInJavaTeamTest {
@@ -27,7 +28,7 @@ public class GroupStepInJavaTeamTest {
     }
 
     @Test
-    public void kirillRazzhigaevTest() {
+    public void testKirillRazzhigaev() {
 
         driver.get("https://www.selenium.dev/");
         driver.findElement(By.xpath("//nav/a[3]")).click();
@@ -37,7 +38,7 @@ public class GroupStepInJavaTeamTest {
     }
 
     @Test
-    public void vitalyZverevTest() {
+    public void testVitalyZverev() {
 
         String value = "Selenium";
 
@@ -49,6 +50,16 @@ public class GroupStepInJavaTeamTest {
         WebElement result = driver.findElement(By.xpath("//div[contains(@class, 'serp-title_font')]"));
 
         Assert.assertEquals(result.getText(), value);
+    }
+
+    @Test
+    public void testAleksAn() {
+        driver.get("http://automationpractice.com/index.php");
+        driver.manage().window().maximize();
+        driver.findElement(By.id("search_query_top")).sendKeys("dresses");
+        driver.findElement(By.name("submit_search")).click();
+        List<WebElement> elementList = driver.findElements(By.xpath("//ul[contains(@class, 'product_list')]/li"));
+        Assert.assertEquals(elementList.size(),7);
     }
 
     @AfterMethod
