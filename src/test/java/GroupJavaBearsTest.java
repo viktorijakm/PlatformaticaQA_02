@@ -51,7 +51,7 @@ public class GroupJavaBearsTest {
         WebElement searchResult = driver.findElement(By.xpath("//li//label[text() = ' Yellowstone National Park']"));
         searchResult.click();
         Assert.assertTrue(driver.findElement(By.xpath("//a[text() = 'Yellowstone' and @class = 'Hero-title ']")).isDisplayed());
-        Thread.sleep(5000);
+        Thread.sleep(6000);
     }
 
     @AfterMethod
