@@ -32,6 +32,15 @@ public class GroupBugBustersTest {
         }
 
         @Test
+
+        public void AndreyTeterinTest() throws InterruptedException {
+            driver.get("https://www.btcsatoshi.com/");
+            Thread.sleep(3000);
+            WebElement price = driver.findElement(By.xpath("//label[@id='oneBitcoin']"));
+            Assert.assertEquals(price.getText(), driver.getTitle().substring(1, 9));
+            Thread.sleep(3000);
+        }
+
         public void mikhailMirTest() throws InterruptedException {
 
             driver.get("https://www.wasserstrom.com/");
@@ -54,6 +63,7 @@ public class GroupBugBustersTest {
 
             WebElement iconUser = driver.findElement(By.id("Header_GlobalLogin_signOutQuickLink"));
             Assert.assertTrue(iconUser.isDisplayed());
+
         }
 
         @AfterMethod
