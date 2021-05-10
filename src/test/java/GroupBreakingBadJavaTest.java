@@ -32,6 +32,14 @@ public class GroupBreakingBadJavaTest {
     }
 
 
+    @Test
+    public void evgeniyTMainGitCommandTest() {
+        driver.get("https://use-web.ru/news.php?id=138&tid=3");
+        WebElement result = driver.findElement(By.xpath("//h2[text()= 'Основные Git команды. ']"));
+
+        Assert.assertEquals(result.getText(), "Основные Git команды.");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
