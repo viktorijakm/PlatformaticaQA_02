@@ -8,19 +8,20 @@ import org.testng.annotations.*;
 
 public class GroupJavaBearsTest {
 
+    private WebDriver driver;
+
     @BeforeClass
-    public void before(){
+    public void before() {
         WebDriverManager.chromedriver().setup();
     }
 
-    private WebDriver driver;
     @BeforeMethod
-    public void beforeTest(){
+    public void beforeTest() {
         driver = new ChromeDriver();
     }
 
     @Test
-    public  void mariaMorozovaTest() {
+    public void mariaMorozovaTest() {
         driver.get("https://www.duckduckgo.com");
 
         WebElement input = driver.findElement(By.className("search__input--adv"));
@@ -30,17 +31,17 @@ public class GroupJavaBearsTest {
         Assert.assertEquals(res.getText(), "Panda Express | A Fast Casual Chinese Restaurant | Panda ...");
     }
 
-	@Test
-	public void sergeyKuznetsov() {
-		driver.get("https://elibrary.unatlib.ru/");
-		WebElement input = driver.findElement(By.className("prompt"));
-		input.sendKeys("Пушкин\n");
-		WebElement result = driver.findElement(By.className("search-stats"));
-		Assert.assertNotEquals(result.getText(), "No Results!");
-	}
+    @Test
+    public void sergeyKuznetsovTest() {
+        driver.get("https://elibrary.unatlib.ru/");
+        WebElement input = driver.findElement(By.className("prompt"));
+        input.sendKeys("Пушкин\n");
+        WebElement result = driver.findElement(By.className("search-stats"));
+        Assert.assertNotEquals(result.getText(), "No Results!");
+    }
 
-	@AfterMethod
-	public void afterTest() {
-		driver.quit();
-	}
+    @AfterMethod
+    public void afterTest() {
+        driver.quit();
+    }
 }
