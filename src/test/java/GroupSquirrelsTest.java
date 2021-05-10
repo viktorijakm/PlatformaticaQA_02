@@ -30,6 +30,14 @@ public class GroupSquirrelsTest {
         Assert.assertEquals(txtStandardProgram.getText(),"Standard English Program");
     }
 
+    @Test
+    public void testOlgaVergasova() {
+        driver.get("https://apnews.com/hub/sports");
+        WebElement list = driver.findElement(By.xpath("//*[@data-key=\"hub-title\"]"));
+        String result = list.getText();
+        Assert.assertEquals(result, "SPORTS");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
