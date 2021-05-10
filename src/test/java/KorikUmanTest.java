@@ -19,7 +19,7 @@ public class KorikUmanTest {
     public void beforeTest() { driver = new ChromeDriver();}
 
     @Test
-    public void test() throws InterruptedException {
+    public void vKorenevskyyTest() throws InterruptedException {
         //navigate to website and click on hyperlink
         driver.get("https://ultimateqa.com/");
 
