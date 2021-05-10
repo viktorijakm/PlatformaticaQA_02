@@ -32,6 +32,19 @@ public class GroupBreakingBadJavaTest {
     }
 
     @Test
+    public void dariaRazzhigaevaTest() throws InterruptedException {
+        driver.get("https://www.airbnb.com/");
+
+        WebElement input = driver.findElement(By.id("bigsearch-query-detached-query"));
+        input.sendKeys("Tokyo");
+        driver.findElement(By.className("_m9v25n")).click();
+
+        Thread.sleep(5000);
+
+        WebElement result = driver.findElement(By.className("_14i3z6h"));
+        Assert.assertTrue(result.isDisplayed());
+    }
+    @Test
     public void vitaliiArtemenkoFoodTest() {
         driver.get("https://lightlife.com/");
         driver.findElement(By.xpath("//a[text()='Our Food'][1]")).click();
@@ -51,4 +64,5 @@ public class GroupBreakingBadJavaTest {
     public void afterTest() {
         driver.quit();
     }
+
 }
