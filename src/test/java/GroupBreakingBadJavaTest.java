@@ -31,6 +31,13 @@ public class GroupBreakingBadJavaTest {
         Assert.assertEquals(elem.getText(), "Soccer");
     }
 
+    @Test
+    public void vitaliiArtemenkoFoodTest() {
+        driver.get("https://lightlife.com/");
+        driver.findElement(By.xpath("//a[text()='Our Food'][1]")).click();
+        WebElement food = driver.findElement(By.tagName("h1"));
+        Assert.assertEquals(food.getText(), "Our Food");
+    }
 
     @Test
     public void evgeniyTMainGitCommandTest() {
@@ -44,5 +51,4 @@ public class GroupBreakingBadJavaTest {
     public void afterTest() {
         driver.quit();
     }
-
 }
