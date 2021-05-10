@@ -11,12 +11,12 @@ import java.util.concurrent.TimeUnit;
 
 public class GroupStepInJavaTeamTest {
 
+    private WebDriver driver;
+
     @BeforeClass
     public void before() {
         WebDriverManager.chromedriver().setup();
     }
-
-    private WebDriver driver;
 
     @BeforeMethod
     public void beforeTest() {
@@ -59,11 +59,11 @@ public class GroupStepInJavaTeamTest {
         driver.findElement(By.id("search_query_top")).sendKeys("dresses");
         driver.findElement(By.name("submit_search")).click();
         List<WebElement> elementList = driver.findElements(By.xpath("//ul[contains(@class, 'product_list')]/li"));
-        Assert.assertEquals(elementList.size(),7);
+        Assert.assertEquals(elementList.size(), 7);
     }
 
     @AfterMethod
-    public void  afterTest () {
+    public void afterTest() {
         driver.quit();
     }
 }
