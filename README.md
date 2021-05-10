@@ -34,7 +34,7 @@ Method name should start with a verb.<br>
 For example: `get`, `is`, `create`, etc.<br>
 Try to make the name simple and descriptive.<br> 
 Use whole word instead of abbreviations.<br>
-All test methods shall end with suffix Test.
+All methods with `@Test` annotation shall start with the prefix `test`.
 ```
 getValues()
 isFocusOnField(WebDriver driver, WebElement element)
