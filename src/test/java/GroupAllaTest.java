@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Groupgroup_alla {
+public class GroupAllaTest {
 
     public static boolean tenMinuteMailTest() {
 
