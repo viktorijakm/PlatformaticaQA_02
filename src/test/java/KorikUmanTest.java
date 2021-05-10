@@ -35,6 +35,5 @@ public class KorikUmanTest {
     public void afterTest() {
         driver.quit();
     }
-
 }
 
