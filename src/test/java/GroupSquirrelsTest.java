@@ -38,6 +38,14 @@ public class GroupSquirrelsTest {
         Assert.assertEquals(result, "SPORTS");
     }
 
+    @Test
+    public void SKhatskevitch() throws InterruptedException {
+        driver.get("https://en.wikipedia.org/wiki/Website");
+        WebElement result = driver.findElement(
+                By.xpath("//*[@class='firstHeading']"));
+        Assert.assertEquals(result.getText(), "Website");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
