@@ -45,6 +45,16 @@ public class GroupStepInJavaTeamTest {
         Assert.assertEquals(elementList.size(),7);
     }
 
+    @Test
+    public void haidukMarsd() {
+        driver.get("https://www.merriam-webster.com/");
+        driver.findElement(By.id("s-term")).sendKeys("anything");
+        driver.findElement(By.className("search-icon")).click();
+        driver.findElement(By.className("learn-more-header"));
+        Assert.assertEquals(driver.findElement(By.className("learn-more-header")).getText(),
+                "Learn More about anything");
+    }
+
     @AfterMethod
     public void  afterTest () {
         driver.quit();
