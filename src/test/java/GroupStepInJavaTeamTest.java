@@ -46,7 +46,7 @@ public class GroupStepInJavaTeamTest {
     }
 
     @Test
-    public void haidukMarsd() {
+    public void testHaidukLibrary() {
         driver.get("https://www.merriam-webster.com/");
         driver.findElement(By.id("s-term")).sendKeys("anything");
         driver.findElement(By.className("search-icon")).click();
