@@ -68,7 +68,7 @@ public class GroupBreakingBadJavaTest {
     }
 
     @Test
-    public void lenaDikTest(){
+    public void testLenaDik(){
 
         driver.get("https://lafitness.com/Pages/Default.aspx#");
 
