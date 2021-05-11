@@ -21,7 +21,7 @@ public class StasChampionTest {
     }
 
     @Test
-    public void test() throws InterruptedException {
+    public void test1StasChampion() throws InterruptedException {
         driver.get("https://google.com/");
 
         WebElement input = driver.findElement(By.className("gLFyf"));
@@ -33,8 +33,21 @@ public class StasChampionTest {
         Assert.assertEquals(result.getText(), "Jess Glynne - 123 [Official Live Video] - YouTube");
     }
 
+    @Test
+    public void test2StasChampion() throws InterruptedException {
+        driver.get("https://bukovel.com/en/");
+
+        Thread.sleep(5000);
+
+        WebElement readMoreButton = driver.findElement(
+                By.xpath("//div[@id='scaleContainer']/div/div/a[contains(text(), 'Read more')]"));
+        readMoreButton.click();
+        WebElement text = driver.findElement(By.xpath("//div[@class='inner-info-text ']"));
+        Assert.assertEquals(text.getText(), "WINTER SEASON CLOSING DATE SCHEDULED FOR MAY 10TH");
+    }
+
     @AfterMethod
     public void afterTest() {
-        driver.quit();
-    }
+            driver.quit();
+        }
 }
