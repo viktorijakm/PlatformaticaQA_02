@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -44,6 +45,7 @@ public class GroupBreakingBadJavaTest {
         WebElement result = driver.findElement(By.className("_14i3z6h"));
         Assert.assertTrue(result.isDisplayed());
     }
+
     @Test
     public void vitaliiArtemenkoFoodTest() {
         driver.get("https://lightlife.com/");
@@ -65,4 +67,22 @@ public class GroupBreakingBadJavaTest {
         driver.quit();
     }
 
+    public static void flash(WebElement element, WebDriver driver) {
+        String bgcolor = element.getCssValue("backgroundColor");
+        for (int i = 0; i < 5; i++) {
+            changColor("#000000", element, driver);
+            changColor(bgcolor, element, driver);
+        }
+    }
+
+    public static void changColor(String color, WebElement element, WebDriver driver) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].style.backgroundColor= '" + color + "' ", element);
+
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {
+            System.out.println("Something went wrong.");
+        }
+    }
 }
