@@ -39,7 +39,7 @@ public class GroupSquirrelsTest {
     }
 
     @Test
-    public void SKhatskevitch() throws InterruptedException {
+    public void testSergeiKhatskevitch() throws InterruptedException {
         driver.get("https://en.wikipedia.org/wiki/Website");
         WebElement result = driver.findElement(
                 By.xpath("//*[@class='firstHeading']"));
