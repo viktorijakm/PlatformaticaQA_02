@@ -31,12 +31,14 @@ public class GroupAllaTest {
         String currentString = mailArea.getText();
         System.out.println("Received mail: " + currentString);
 
-        boolean checkMail = (currentString.equals("")) ? false : true;
+        boolean checkMail = !currentString.equals("");
 
-        Assert.assertEquals(checkMail, true, "email not received");
+        Assert.assertTrue(checkMail, "email not received");
 
     }
 
     @AfterMethod
-    public void afterTest() { driver.quit(); }
+    public void afterTest() {
+        driver.quit();
+    }
 }
