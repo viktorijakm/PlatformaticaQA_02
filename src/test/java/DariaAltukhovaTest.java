@@ -63,9 +63,7 @@ public class DariaAltukhovaTest {
 
     @AfterMethod
     public void afterTest() {
-
         driver.quit();
     }
 
 }
-
