@@ -66,6 +66,21 @@ public class GroupJavaBearsTest {
     Thread.sleep(2000);
     }
 
+    @Test
+    public  void testNataliaGrebeniuk() throws InterruptedException {
+
+            driver.get("https://google.com/");
+
+            WebElement input = driver.findElement(By.className("gLFyf"));
+            input.sendKeys("123\n");
+
+            WebElement result = driver.findElement(
+                    By.className("MMgsKf"));
+            Assert.assertEquals(result.getText(), "Jess Glynne - 123 [Official Live Video] - YouTube");
+
+            Thread.sleep(5000);
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
