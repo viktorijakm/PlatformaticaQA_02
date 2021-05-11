@@ -54,6 +54,18 @@ public class GroupJavaBearsTest {
         Thread.sleep(6000);
     }
 
+    @Test
+    public void testAlexMack() throws InterruptedException {
+    driver.get("https://www.fandango.com/");
+
+    WebElement searchField = driver.findElement(By.className("fan-input"));
+    searchField.sendKeys("nobody\n");
+    WebElement movie = driver.findElement(By.className("results-thumb"));
+    movie.click();
+    Assert.assertTrue(driver.findElement(By.className("js-movie-video-link")).isDisplayed());
+    Thread.sleep(2000);
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
