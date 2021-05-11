@@ -38,7 +38,5 @@ public class GroupAllaTest {
     }
 
     @AfterMethod
-    public void afterTest() {
-        driver.quit();
-    }
+    public void afterTest() { driver.quit(); }
 }
