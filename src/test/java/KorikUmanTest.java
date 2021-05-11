@@ -46,9 +46,6 @@ public class KorikUmanTest {
         String actual = result.getText();
         //validate test
         Assert.assertEquals(actual, expected);
-
-
-
     }
 
     @AfterMethod
