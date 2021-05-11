@@ -10,12 +10,12 @@ import java.util.List;
 
 public class GroupStepInJavaTeamTest {
 
+    private WebDriver driver;
+
     @BeforeClass
     public void before() {
         WebDriverManager.chromedriver().setup();
     }
-
-    private WebDriver driver;
 
     @BeforeMethod
     public void beforeTest() {
@@ -55,8 +55,23 @@ public class GroupStepInJavaTeamTest {
                 "Learn More about anything");
     }
 
+    @Test
+    public void testLarisaMalushkina() throws InterruptedException {
+
+        driver.get("https://marshalls.com/");
+        WebElement modalClose = driver.findElement(By.xpath("//*[@id='modal-close']"));
+        modalClose.click();
+        WebElement inputField = driver.findElement(By.xpath("//input[@id='search-text-input']"));
+        inputField.sendKeys("dress");
+        WebElement searchButton = driver.findElement(By.xpath("//input[@id='search-submit-button']"));
+        searchButton.click();
+        WebElement result = driver.findElement(By.xpath("//h1[contains(text(),'Dresses')]"));
+        Assert.assertEquals(result.getText(), "Dresses");
+        Thread.sleep(2000);
+    }
+
     @AfterMethod
-    public void  afterTest () {
+    public void afterTest() {
         driver.quit();
     }
 }
