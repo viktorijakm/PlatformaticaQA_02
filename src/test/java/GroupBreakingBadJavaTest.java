@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,19 +32,25 @@ public class GroupBreakingBadJavaTest {
         Assert.assertEquals(elem.getText(), "Soccer");
     }
 
+    public static void newScroll (WebDriver driver, WebElement element) {
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].scrollIntoView();", element);
+    }
+
     @Test
     public void dariaRazzhigaevaTest() throws InterruptedException {
-        driver.get("https://www.airbnb.com/");
+        driver.get("https://arc.losrios.edu/");
+        driver.findElement(By.linkText("About Us")).click();
 
-        WebElement input = driver.findElement(By.id("bigsearch-query-detached-query"));
-        input.sendKeys("Tokyo");
-        driver.findElement(By.className("_m9v25n")).click();
+        Thread.sleep(1000);
 
-        Thread.sleep(5000);
+        WebElement element = driver.findElement(By.linkText("Contact Us"));
+        newScroll(driver, element );
 
-        WebElement result = driver.findElement(By.className("_14i3z6h"));
-        Assert.assertTrue(result.isDisplayed());
+        WebElement address = driver.findElement(By.className("address_link"));
+        Assert.assertTrue(address.getText().contains("4700 College Oak Drive"));
     }
+
     @Test
     public void vitaliiArtemenkoFoodTest() {
         driver.get("https://lightlife.com/");
@@ -76,5 +83,24 @@ public class GroupBreakingBadJavaTest {
     @AfterMethod
     public void afterTest() {
         driver.quit();
+    }
+  
+    public static void flash(WebElement element, WebDriver driver) {
+        String bgcolor = element.getCssValue("backgroundColor");
+        for (int i = 0; i < 5; i++) {
+            changColor("#000000", element, driver);
+            changColor(bgcolor, element, driver);
+        }
+    }
+
+    public static void changColor(String color, WebElement element, WebDriver driver) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].style.backgroundColor= '" + color + "' ", element);
+
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {
+            System.out.println("Something went wrong.");
+        }
     }
 }
