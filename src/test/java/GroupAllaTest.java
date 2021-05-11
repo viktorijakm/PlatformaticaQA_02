@@ -4,46 +4,39 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class GroupAllaTest {
 
-    public static boolean tenMinuteMailTest() {
-
-        String currentMail = "";
-        //System.setProperty("webdriver.chrome.driver", "C:/_install/chromedriver.exe");
+    @BeforeClass
+    public void before() {
         WebDriverManager.chromedriver().setup();
-        WebDriver chromedrv = new ChromeDriver();
+    }
 
+    private WebDriver driver;
 
-        try {
-            chromedrv.get("https://10mail.org/");
+    @BeforeMethod
+    public void beforeTest() {
+        driver = new ChromeDriver();
 
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            WebElement mailArea = chromedrv.findElement(By.className("address"));
-            currentMail = mailArea.getText();
-
-            if (currentMail.equals(""))
-                return false;
-
-            System.out.println("Received mail: " + currentMail);
-        } finally {
-
-            chromedrv.quit();
-
-        }
-
-        return true;
     }
 
     @Test
-    public void poptsovRomanTest() {
-        Assert.assertEquals(tenMinuteMailTest(), true, "test failed");
+    public void poptsovRomanTest() throws InterruptedException {
+
+        driver.get("https://10mail.org/");
+        Thread.sleep(3000); //awaiting the issuance of the address
+
+        WebElement mailArea = driver.findElement(By.className("address"));
+        String currentString = mailArea.getText();
+        System.out.println("Received mail: " + currentString);
+
+        boolean checkMail = (currentString.equals("")) ? false : true;
+
+        Assert.assertEquals(checkMail, true, "email not received");
+
     }
 
+    @AfterMethod
+    public void afterTest() { driver.quit(); }
 }
