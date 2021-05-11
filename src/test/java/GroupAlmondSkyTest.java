@@ -1,0 +1,52 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class GroupAlmondSkyTest {
+
+    @BeforeClass
+    public void before() {
+        WebDriverManager.chromedriver().setup();
+    }
+
+    private WebDriver driver;
+
+    @BeforeMethod
+    public void beforeTest() {
+        driver = new ChromeDriver();
+    }
+
+    @Test
+    public void tatianaChuevaTest() throws InterruptedException {
+
+        String expectedResultPageHeader = "CONTACT US";
+
+        driver.get("https://www.loganparkapartments.com/");
+
+        WebElement popButtonClose = driver.findElement(By.xpath("//a[@id='popBtnClose']"));
+        popButtonClose.click();
+
+        WebElement pushMenu = driver.findElement(By.xpath("//div[@id='menuHeader']"));
+        pushMenu.click();
+        Thread.sleep(3000);
+        WebElement inputContactButton = driver.findElement(By.xpath("//div[@id='mainNavHeader']/ul[@id='menuElem']/li[@class='contact']/a[@href='/Contact.aspx']"));
+        inputContactButton.click();
+
+        WebElement pageHeader = driver.findElement(By.xpath("//h1[@class='pageHeader']"));
+        String actualResultPageHeader = pageHeader.getText();
+
+        Assert.assertEquals(actualResultPageHeader, expectedResultPageHeader);
+    }
+
+    @AfterMethod
+    public void afterTest() {
+        driver.quit();
+    }
+}
