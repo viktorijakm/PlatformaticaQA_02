@@ -27,7 +27,9 @@ public class IrinaBTest {
         driver.get("http://www.99-bottles-of-beer.net/");
 
         WebElement actualResult = driver.findElement(By.xpath("//div[@id='main']/h2"));
+
         Assert.assertEquals(actualResult.getText(), "Welcome to 99 Bottles of Beer");
+
     }
     @AfterMethod
     public void afterTest() {
