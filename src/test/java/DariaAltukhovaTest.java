@@ -17,18 +17,15 @@ public class DariaAltukhovaTest {
     }
 
     private WebDriver driver;
-
-    String expectedDemoUrl = "https://www.edcast.com/corp/request-a-demo/";
+    final String demoUrl = "https://www.edcast.com/corp/request-a-demo/";
 
     @BeforeMethod
     public void beforeTest() {
         driver = new ChromeDriver();
-
     }
 
     @Test
-    public void firstTest() throws InterruptedException {
-
+    public void testDariaAltukhovaOpenDemoFromPage() throws InterruptedException {
         driver.get("https://www.edcast.com/");
 
         WebElement productButton = driver.findElement(By.id("menu-item-442"));
@@ -40,30 +37,37 @@ public class DariaAltukhovaTest {
 
         WebElement requestDemoButton = driver.findElement(By.className("fl-button-text"));
         requestDemoButton.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
-        Assert.assertEquals(driver.getCurrentUrl(), expectedDemoUrl);
+        Assert.assertEquals(driver.getCurrentUrl(), demoUrl);
     }
 
-
     @Test
-    public void secondTest() throws InterruptedException {
-
+    public void testDariaAltukhovaOpenDemoFromMenu() throws InterruptedException {
         driver.get("https://www.edcast.com/");
         WebElement demoHeaderButton = driver.findElement(By.id("menu-item-6658"));
-
         demoHeaderButton.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
-        Assert.assertEquals(driver.getCurrentUrl(), expectedDemoUrl);
+        Assert.assertEquals(driver.getCurrentUrl(), demoUrl);
+        driver.quit();
+    }
+
+    @Test
+    public void testDariaAltukhovaDemoVideoButton() throws InterruptedException {
+        driver.navigate().to("https://www.edcast.com/");
+        WebElement watchEdcastDemoVideoButton = driver.findElement(By.className("fl-button"));
+        watchEdcastDemoVideoButton.click();
+        Thread.sleep(2000);
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://go.edcast.com/l/139221/2021-03-31/2m9x9x");
 
         driver.quit();
-
     }
 
     @AfterMethod
     public void afterTest() {
         driver.quit();
     }
-
 }
+
