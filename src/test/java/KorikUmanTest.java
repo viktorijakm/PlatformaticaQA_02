@@ -32,7 +32,7 @@ public class KorikUmanTest {
     }
 
     @Test
-    public void newTest() throws InterruptedException {
+    public void vKorenevskyyTestTwo() throws InterruptedException {
         //navigate to website
         driver.get("https://ultimateqa.com/");
         //locate search field
