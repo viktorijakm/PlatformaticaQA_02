@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.util.concurrent.TimeUnit;
+
 public class GroupBugBustersTest {
 
     private WebDriver driver;
@@ -86,6 +88,23 @@ public class GroupBugBustersTest {
 
         Assert.assertTrue(finder.getText().toLowerCase().contains("aluminum angle"));
         Thread.sleep(1000);
+
+        }
+    
+  @Test
+    public void testEdwardNasdaq(){
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
+        driver.get("https://www.nasdaq.com/");
+
+        driver.findElement(By.className("primary-nav__anchor-text")).click();
+        driver.findElement(By.id("find-symbol-input-dark")).sendKeys("AAPL");
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        driver.findElement(By.className("find-symbol__suggestion")).click();
+
+        WebElement AppleStock = driver.findElement(By.className("symbol-page-header__name"));
+        Assert.assertEquals(AppleStock.getText(), "Apple Inc. Common Stock (AAPL)");
+
     }
 
     @Test
@@ -94,6 +113,7 @@ public class GroupBugBustersTest {
         driver.findElement(By.linkText("MODELS")).click();
         WebElement lambo = driver.findElement(By.xpath("/html/body/div/div[1]/div/section[2]/div[2]/div[2]/div[1]/div/div/div/div[2]/div[2]/div/div[3]/a/span"));
         Assert.assertEquals(lambo.getText(),"AVENTADOR SVJ");
+
     }
 
     @AfterMethod
