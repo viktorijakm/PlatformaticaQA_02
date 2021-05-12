@@ -118,6 +118,7 @@ public class GroupBreakingBadJavaTest {
 
     @Test
     public void vadymKarpychTest() throws InterruptedException {
+
         driver.get("https://www.wholefoodsmarket.com/");
 
         WebElement input = driver.findElement(By.xpath("//span[contains(text(),'Find a Store')]"));
