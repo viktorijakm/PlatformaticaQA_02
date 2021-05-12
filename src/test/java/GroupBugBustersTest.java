@@ -32,7 +32,6 @@ public class GroupBugBustersTest {
         }
 
         @Test
-
         public void AndreyTeterinTest() throws InterruptedException {
             driver.get("https://www.btcsatoshi.com/");
             Thread.sleep(3000);
@@ -41,6 +40,7 @@ public class GroupBugBustersTest {
             Thread.sleep(3000);
         }
 
+        @Test
         public void mikhailMirTest() throws InterruptedException {
 
             driver.get("https://www.wasserstrom.com/");

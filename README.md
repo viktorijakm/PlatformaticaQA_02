@@ -11,8 +11,8 @@ The directory names shall be short and meaningful.
 #### Package names
 The reverse of the organization’s domain name should be used as the prefix.<br> 
 All letters should be in lower case.<br> 
-Subsequent directory name shall be used according to the need of the project.<br>
-Meaningful directory name shall be used to indicate the content within the package.
+According to the need of the project shall use subsequent directory names.<br>
+To indicate the content within the package shall use a meaningful directory name.
 ```
 com.project.selenium
 com.project.selenium.pages
@@ -20,16 +20,17 @@ com.project.selenium.tests
 com.project.selenium.utils
 ```
 #### Class names
-The upper camel case should be used for the class names.<br> 
-The class name should be a noun. Try to make the name simple and descriptive.<br>
-All the tests shall end with suffix Test.<br>
-All the pages shall end with suffix Page.
+The class names should use the upper camel case.<br> 
+The class name should be a noun.<br>
+Try to make the name simple and descriptive.<br>
+All the tests shall end with the suffix Test.<br>
+All the pages shall end with the suffix Page.
 ```
 LoginTest.java
 LoginPage.java
 ```
 #### Method names
-A lower camel case should be used for the method names.<br>
+For the method, names should use a lower camel case.<br>
 Method name should start with a verb.<br>
 For example: `get`, `is`, `create`, etc.<br>
 Try to make the name simple and descriptive.<br> 
@@ -37,12 +38,12 @@ Use whole word instead of abbreviations.<br>
 All methods with `@Test` annotation shall start with the prefix `test`.
 ```
 getValues()
-isFocusOnField(WebDriver driver, WebElement element)
 createInstance(WebDriver driver)
+`testDeleteRecord()`
 ```
 #### Variable names
-A lower camel case should be used for the variable names.<br> 
-The intent of the variable shall be indicated with the given name.<br> 
+The variable names should use a lower camel case.<br> 
+The given name shall indicate the intent of the variable.<br> 
 The variable name should be a noun.<br> 
 Try to make the name simple and descriptive using full words.<br>
 For example: `button`, NOT `btn`.
@@ -61,7 +62,7 @@ public static final String ERROR_MESSAGE;
 ```
 #### Comments
 Comments shall be used to explain the code to make the test scripts more readable for others.<br>
-Comments for methods and classes shall be used in Java Doc format. 
+Javadoc format should be used comments for methods and classes. 
 ```
 /**
 * @param username the login username
