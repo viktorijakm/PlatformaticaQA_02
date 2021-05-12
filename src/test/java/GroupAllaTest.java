@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+
 public class GroupAllaTest {
 
     @BeforeClass
@@ -37,7 +38,29 @@ public class GroupAllaTest {
 
     }
 
+      @Test
+    public void testGunchenkoAlex() {
+        driver.get("https://www.google.com/");
+        WebElement input = driver.findElement(By.className("gLFyf"));
+        input.sendKeys("gismeteo\n");
+        WebElement result1 = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/div/div[1]/a/h3"));
+        Assert.assertEquals(result1.getText(), "GISMETEO: Погода в Украине, прогноз погоды на сегодня ...");
+        WebElement GismeteoButton = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/div/div[1]/a/h3"));
+        GismeteoButton.click();
+        WebElement searchField = driver.findElement(By.id("js-search"));
+        searchField.sendKeys("Харьков\n");
+        driver.findElement(By.linkText("Харьков")).click();
+        driver.findElement(By.xpath("/html/body/section/nav/div/ul/li[6]/a")).click();
+        driver.findElement(By.xpath("/html/body/section/nav/div/ul/li[7]/a")).click();
+        WebElement pageTitile = driver.findElement(By.tagName("h1"));
+        String pageTitleName = pageTitile.getText();
+        Assert.assertEquals(pageTitleName, "Погода в аэропорту Харьков на месяц");
+    }
+
     @AfterMethod
     public void afterTest() {
-        driver.quit(); }
+        driver.quit();
+    }
 }
+
+
