@@ -73,8 +73,8 @@ public class GroupBugBustersTest {
     }
 
 
-        @Test
-        public void romanBTest() throws InterruptedException {
+    @Test
+    public void romanBTest() throws InterruptedException {
 
         driver.get("https://www.homedepot.com/");
 
@@ -86,12 +86,8 @@ public class GroupBugBustersTest {
 
         Assert.assertTrue(finder.getText().toLowerCase().contains("aluminum angle"));
         Thread.sleep(1000);
-        }
+    }
 
-        @AfterMethod
-        public void afterTest() {
-            driver.quit();
-        }
 
     @AfterMethod
     public void afterTest() {
