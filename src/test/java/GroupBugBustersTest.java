@@ -72,8 +72,30 @@ public class GroupBugBustersTest {
         Assert.assertTrue(result, "Logo is here");
     }
 
+
+        @Test
+        public void romanBTest() throws InterruptedException {
+
+        driver.get("https://www.homedepot.com/");
+
+        WebElement input = driver.findElement(By.id("headerSearch"));
+        input.sendKeys("aluminum angle\n");
+        Thread.sleep(3000);
+
+        WebElement finder = driver.findElement(By.xpath("//span[@class ='product-pod__title__product']"));
+
+        Assert.assertTrue(finder.getText().toLowerCase().contains("aluminum angle"));
+        Thread.sleep(1000);
+        }
+
+        @AfterMethod
+        public void afterTest() {
+            driver.quit();
+        }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
     }
+
 }
