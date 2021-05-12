@@ -66,6 +66,18 @@ public class GroupJavaBearsTest {
     Thread.sleep(2000);
     }
 
+    @Test
+    public void testYaraGrats() {
+        driver.get("https://keepcalling.com/");
+
+        WebElement countryInput = driver.findElement(By.xpath("//input[@id = 'destination']"));
+        countryInput.sendKeys("Russia\n");
+        WebElement countryRate =
+                driver.findElement(By.xpath("//p[contains(@class,'h3 rate-top text-left')and contains(text(),'Russia')]"));
+
+        Assert.assertEquals(countryRate.getText(),"Russia");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
