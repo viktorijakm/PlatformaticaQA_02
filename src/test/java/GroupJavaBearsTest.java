@@ -78,7 +78,6 @@ public class GroupJavaBearsTest {
                     By.className("MMgsKf"));
             Assert.assertEquals(result.getText(), "Jess Glynne - 123 [Official Live Video] - YouTube");
 
-            Thread.sleep(5000);
     }
 
     @AfterMethod
