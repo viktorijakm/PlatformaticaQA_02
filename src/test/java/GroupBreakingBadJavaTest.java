@@ -103,6 +103,19 @@ public class GroupBreakingBadJavaTest {
         Assert.assertEquals(result.getText(), "Основные Git команды.");
     }
 
+    @Test
+    public void testLenaDik(){
+
+        driver.get("https://lafitness.com/Pages/Default.aspx#");
+
+        WebElement element = driver.findElement(By.id("ctl00_GlobalHeader_txtZip"));
+        element.click();
+        element.clear();
+        element.sendKeys("20878\n");
+        WebElement clubName = driver.findElement(By.id("ctl00_MainContent_repClubInfo_ctl01_lblClubDisplayName"));
+        Assert.assertEquals(clubName.getText(), "Gaithersburg - Copley Place");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
