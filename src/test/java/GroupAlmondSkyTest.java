@@ -45,6 +45,18 @@ public class GroupAlmondSkyTest {
         Assert.assertEquals(actualResultPageHeader, expectedResultPageHeader);
     }
 
+    @Test
+    public void testLizaSh() {
+        driver.get("https://www.cactusandtropicals.com/");
+
+        WebElement button = driver.findElement(By.xpath("//a[text()='View our services.']"));
+        button.click();
+
+        WebElement result = driver.findElement(By.className("page-title"));
+
+        Assert.assertEquals(result.getText(), "PLANT SERVICES");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();

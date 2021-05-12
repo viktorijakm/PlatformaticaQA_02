@@ -39,11 +39,23 @@ public class GroupSquirrelsTest {
     }
 
     @Test
-    public void SKhatskevitch() throws InterruptedException {
+    public void testSergeiKhatskevitch() throws InterruptedException {
         driver.get("https://en.wikipedia.org/wiki/Website");
         WebElement result = driver.findElement(
                 By.xpath("//*[@class='firstHeading']"));
         Assert.assertEquals(result.getText(), "Website");
+    }
+
+    @Test
+    public void testRichardGobal() throws InterruptedException {
+        driver.get("https://www.iherb.com/");
+        driver.findElement(By.className("iherb-header-search-input")).sendKeys("blueberry juice\n");
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"pid_7091\"]/div[2]/div[1]/a")).click();
+        Thread.sleep(1000);
+        WebElement isItInStock = driver.findElement(By.xpath("//*[@id='stock-status']/strong"));
+        Thread.sleep(1000);
+        Assert.assertEquals(isItInStock.getText(), "In Stock");
     }
 
     @AfterMethod

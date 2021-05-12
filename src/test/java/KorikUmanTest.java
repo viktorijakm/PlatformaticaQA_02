@@ -31,6 +31,23 @@ public class KorikUmanTest {
         Boolean result = driver.findElement(By.className("et_pb_video_overlay_hover")).isDisplayed();
     }
 
+    @Test
+    public void vKorenevskyyTestTwo() throws InterruptedException {
+        //navigate to website
+        driver.get("https://ultimateqa.com/");
+        //locate search field
+        WebElement search = driver.findElement(By.xpath("//*[@name='s'][@class='et_pb_s']"));
+        //send search text
+        search.sendKeys("Selenium Java\n");
+        //locate target element
+        WebElement result = driver.findElement(By.className("jetpack-instant-search__search-results-title"));
+        //declare veriables
+        String expected = "Found 10 results";
+        String actual = result.getText();
+        //validate test
+        Assert.assertEquals(actual, expected);
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
