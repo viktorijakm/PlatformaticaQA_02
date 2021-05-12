@@ -74,7 +74,7 @@ public class GroupBugBustersTest {
 
 
     @Test
-    public void romanBTest() throws InterruptedException {
+    public void testRomanB() throws InterruptedException {
 
         driver.get("https://www.homedepot.com/");
 
