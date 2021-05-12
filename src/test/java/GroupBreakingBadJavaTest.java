@@ -116,6 +116,22 @@ public class GroupBreakingBadJavaTest {
         Assert.assertEquals(clubName.getText(), "Gaithersburg - Copley Place");
     }
 
+    @Test
+    public void vadymKarpychTest() throws InterruptedException {
+        driver.get("https://www.wholefoodsmarket.com/");
+
+        WebElement input = driver.findElement(By.xpath("//span[contains(text(),'Find a Store')]"));
+        input.click();
+
+        WebElement input2 = driver.findElement(By.id("store-finder-search-bar"));
+        input2.sendKeys("Sacramento");
+        input2.click();
+
+        WebElement output = driver.findElement(By.xpath("//a[contains(text(),'Sacramento')]"));
+
+        Assert.assertEquals(output.getText(), "Sacramento");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
