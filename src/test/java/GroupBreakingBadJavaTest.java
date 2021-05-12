@@ -117,7 +117,7 @@ public class GroupBreakingBadJavaTest {
     }
 
     @Test
-    public void vadymKarpychTest() throws InterruptedException {
+    public void vadymKarpychTest() {
 
         driver.get("https://www.wholefoodsmarket.com/");
 
