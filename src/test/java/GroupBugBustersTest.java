@@ -23,6 +23,15 @@ public class GroupBugBustersTest {
     }
 
     @Test
+    public void testMK() throws InterruptedException {
+        driver.get("https://www.dillards.com/");
+        Thread.sleep(3000);
+        driver.findElement(By.id("topcat_Kids")).click();
+        WebElement result = driver.findElement(By.linkText("Girls"));
+        Assert.assertTrue(result.isDisplayed());
+    }
+
+    @Test
     public void testLudaPetkel() {
         driver.get("https://www.flooringliquidators.ca/");
         driver.findElement(By.linkText("About")).click();
