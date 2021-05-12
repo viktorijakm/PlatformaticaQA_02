@@ -48,6 +48,6 @@ public class StasChampionTest {
 
     @AfterMethod
     public void afterTest() {
-            driver.quit();
-        }
+        driver.quit();
+    }
 }
