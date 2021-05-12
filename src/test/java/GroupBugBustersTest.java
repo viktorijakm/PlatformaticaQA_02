@@ -87,6 +87,7 @@ public class GroupBugBustersTest {
         Assert.assertTrue(finder.getText().toLowerCase().contains("aluminum angle"));
         Thread.sleep(1000);
     }
+
     @Test
     public void testTimYoshi() {
         driver.get("https://www.lamborghini.com/en-en");
