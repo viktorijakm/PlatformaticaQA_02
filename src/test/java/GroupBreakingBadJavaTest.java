@@ -116,6 +116,34 @@ public class GroupBreakingBadJavaTest {
         Assert.assertEquals(clubName.getText(), "Gaithersburg - Copley Place");
     }
 
+    @Test
+    public void testAntonBrutTrip() throws InterruptedException {
+        driver.get("https://www.nationalgeographic.com/");
+
+        driver.findElement(By.xpath("//button[@aria-label='Menu']")).click();
+        driver.findElement(By.xpath("//a[contains(text(), 'Book A Trip')]")).click();
+
+        driver.findElement(By.xpath("//div/span[contains(text(), 'Destination')]")).click();
+        WebElement northAmerica = driver.findElement(By.id("react-select-2--option-9"));
+        northAmerica.click();
+
+        driver.findElement(By.xpath("//div/span[contains(text(), 'Trip Type')]")).click();
+        Thread.sleep(750);
+        WebElement train = driver.findElement(By.id("react-select-3--option-6"));
+        train.click();
+
+        driver.findElement(By.xpath("//div/span[contains(text(), 'Departure Month')]")).click();
+        Thread.sleep(750);
+        WebElement august2021 = driver.findElement(By.id("react-select-4--option-1"));
+        august2021.click();
+
+        driver.findElement(By.xpath("//span[contains(text(), 'Search Trips')]")).click();
+
+        WebElement tripTitle = driver.findElement(By.className("ngs-exp-search--facet-header"));
+        Thread.sleep(300);
+        Assert.assertEquals(tripTitle.getText(), "Find a Trip");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
