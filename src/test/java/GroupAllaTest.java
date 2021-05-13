@@ -4,17 +4,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 
 public class GroupAllaTest {
+
+    private WebDriver driver;
 
     @BeforeClass
     public void before() {
         WebDriverManager.chromedriver().setup();
     }
-
-    private WebDriver driver;
 
     @BeforeMethod
     public void beforeTest() {
@@ -55,6 +58,14 @@ public class GroupAllaTest {
         WebElement pageTitile = driver.findElement(By.tagName("h1"));
         String pageTitleName = pageTitile.getText();
         Assert.assertEquals(pageTitleName, "Погода в аэропорту Харьков на месяц");
+    }
+
+    @Test
+    public void testSherstnevaHanna() {
+        driver.get("https://www.tut.by/");
+        driver.findElement(By.xpath("//a[@class=\'enter\']")).click();
+        Boolean result = driver.findElement(By.xpath("//div[@class='b-auth-form__inner']//div[2]/input")).isEnabled();
+        Assert.assertFalse(result);
     }
 
     @AfterMethod
