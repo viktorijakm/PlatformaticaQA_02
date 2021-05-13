@@ -89,6 +89,27 @@ public class GroupBooleanAutocratsTest {
         Thread.sleep(3000);
     }
 
+    @Test
+    public void testAlekseiMaslo() throws InterruptedException {
+
+        final String expResultText = "desk";
+
+        driver.get("https://www.ikea.com/us/en/");
+        Thread.sleep(1000);
+
+        WebElement inputField = driver.findElement(By.name("q"));
+        inputField.sendKeys("desk");
+        Thread.sleep(1000);
+
+        WebElement searchButton = driver.findElement(By.id("search-box__searchbutton"));
+        searchButton.click();
+        Thread.sleep(5000);
+
+        WebElement surveyText = driver.findElement(By.xpath("//section/fieldset/legend"));
+
+        Assert.assertTrue(surveyText.getText().contains(expResultText));
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
