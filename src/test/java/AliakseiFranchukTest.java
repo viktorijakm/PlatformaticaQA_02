@@ -10,38 +10,39 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class AliakseiFranchukTest {
+    public class AliakseiFranchukTest {
 
-    private WebDriver driver;
+        private WebDriver driver;
 
-    @BeforeClass
-    public void setUpDriverManager(){
-        WebDriverManager.chromedriver().setup();
+        @BeforeClass
+        public void setUpDriverManager() {
+            WebDriverManager.chromedriver().setup();
+        }
+
+        @BeforeTest
+        public void setUpDriver() {
+            driver = new ChromeDriver();
+        }
+
+        @Test
+        public void testAliakseiFranchuk() {
+
+            driver.get("https://www.tut.by/");
+            driver.manage().window().maximize();
+
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,9000)");
+
+            WebElement approve = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a"));
+
+            Assert.assertEquals(approve.getText(), "ТУТ БАЙ МЕДИА");
+        }
+
+        @AfterClass
+        public void quitBrowser(){
+            driver.quit();
+        }
     }
 
-    @BeforeTest
-    public void setUpDriver(){
-        driver = new ChromeDriver();
-    }
 
-    @Test
-    public void webTest() {
 
-        driver.get("https://www.tut.by/");
-        driver.manage().window().maximize();
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,9000)");
-
-        WebElement approve = driver.findElement(By.xpath("//*[@id=\"footer\"]/div/div[2]/ul/li[1]/a"));
-
-        Assert.assertEquals(approve.getText(), "ТУТ БАЙ МЕДИА");
-
-    }
-
-    @AfterClass
-    public void quitBrowser(){
-        driver.quit();
-    }
-
-}
