@@ -80,7 +80,7 @@ public class GroupBugBustersTest {
         driver.manage().window().maximize();
         boolean result;
         result = driver.findElements(By.xpath("//div[@class = 'logo__image_bg']")).size() > 0;
-        Assert.assertTrue(result, "Logo is here");
+        Assert.assertTrue(result, "Logo is here but I'm not sure");
     }
 
 
