@@ -117,7 +117,9 @@ public class GroupBugBustersTest {
     }
 
     @Test
-    public void testTimChukchaYoshi() {
+    public void testTimYoshi() {
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
         driver.get("https://www.lamborghini.com/en-en");
         driver.findElement(By.linkText("MODELS")).click();
         WebElement lambo = driver.findElement(By.xpath("/html/body/div/div[1]/div/section[2]/div[2]/div[2]/div[1]/div/div/div/div[2]/div[2]/div/div[3]/a/span"));
