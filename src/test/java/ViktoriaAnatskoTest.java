@@ -24,7 +24,7 @@ public class ViktoriaAnatskoTest {
     }
 
     @Test
-    public void test() throws InterruptedException {
+    public void testViktoriaAnatsko() throws InterruptedException {
         driver.get("https://oz.by/");
 
         WebElement input = driver.findElement(By.id("top-s"));
