@@ -100,6 +100,23 @@ public class GroupStepInJavaTeamTest {
         Thread.sleep(2000);
     }
 
+    @Test
+    public void testVitaliiDmitrenko() {
+
+        driver.get("https://www.gismeteo.ua/weather-kharkiv-5053/");
+        WebElement tenDaysButton = driver.findElement(By.xpath("//a[@href='/weather-kharkiv-5053/10-days/']"));
+        tenDaysButton.click();
+
+        WebElement tenDaysTitle = driver.findElement(By.xpath("//div[@class='pageinfo_title index-h1']//h1"));
+        Assert.assertEquals(tenDaysTitle.getText(),"Погода в Харькове на 10 дней");
+
+        WebElement monthButton = driver.findElement(By.xpath("//a[@href='/weather-kharkiv-5053/month/']"));
+        monthButton.click();
+
+        WebElement monthTitle = driver.findElement(By.xpath("//div[@class='pageinfo_title index-h1']//h1"));
+        Assert.assertEquals(monthTitle.getText(),"Погода в Харькове на месяц");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
