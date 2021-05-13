@@ -44,6 +44,24 @@ public class GroupBooleanAutocratsTest {
     }
 
     @Test
+    public void testVictoriaRus() {
+
+        final String result = "FILTERS";
+
+        driver.get("https://www.zara.com/us/");
+
+        driver.findElement(By.xpath("//*[@id=\"theme-app\"]/div/div/header/div/div[2]/div/div/a/span[1]/span")).click();
+
+        WebElement searchField = driver.findElement(By.id("search-products-form-combo-input"));
+        searchField.click();
+        searchField.sendKeys("Black Dress",Keys.ENTER);
+
+        WebElement outcome = driver.findElement(By.xpath("//*[@id=\"main\"]/article/div/div/div[1]/div[2]/div[2]/button/span"));
+
+        Assert.assertEquals(result, outcome.getText());
+    }
+
+    @Test
     public void testPonomid() throws InterruptedException {
         String email = "opiijohno@gmail.com";
         driver.get("https://earnon.social");
