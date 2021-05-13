@@ -87,6 +87,7 @@ public class GroupStepInJavaTeamTest {
         Assert.assertEquals(result.getText(), "Dresses");
         Thread.sleep(2000);
     }
+
     @Test
     public void testNataliaBoiko() throws InterruptedException {
             driver.get("https://akniga.org/");
