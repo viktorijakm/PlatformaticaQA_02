@@ -68,6 +68,27 @@ public class GroupAllaTest {
         Assert.assertFalse(result);
     }
 
+    @Test
+    public void testIgorChupin() throws InterruptedException {
+
+        driver.get("https://www.tut.by/");
+        WebElement input = driver.findElement(By.className("enter"));
+        input.click();
+
+        WebElement username = driver.findElement(By.name("login"));
+        username.sendKeys("unexistingmail@mail.com");
+
+        WebElement password = driver.findElement(By.name("password"));
+        password.sendKeys("password");
+
+        WebElement buttonEnter = driver.findElement(By.xpath("//input[@value=\'Войти\']"));
+        buttonEnter.click();
+
+        Thread.sleep(1000); //без этого ответ не всегда успевает появиться
+        Assert.assertEquals(driver.findElement(By.className("error-msg")).getText(),
+                "Неверное имя пользователя или пароль");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
