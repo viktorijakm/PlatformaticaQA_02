@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class GroupBreakingBadJavaTest {
 
@@ -116,6 +118,7 @@ public class GroupBreakingBadJavaTest {
         Assert.assertEquals(clubName.getText(), "Gaithersburg - Copley Place");
     }
 
+
     @Test
     public void testAntonBrutTrip() throws InterruptedException {
         driver.get("https://www.nationalgeographic.com/");
@@ -142,6 +145,34 @@ public class GroupBreakingBadJavaTest {
         WebElement tripTitle = driver.findElement(By.className("ngs-exp-search--facet-header"));
         Thread.sleep(300);
         Assert.assertEquals(tripTitle.getText(), "Find a Trip");
+    }
+
+    @Test
+    public void testViktoriaKPark() throws InterruptedException {
+
+        WebDriverManager.chromedriver().setup();
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
+
+        driver.get("https://www.nps.gov/index.htm");
+
+        WebElement input = driver.findElement(
+                By.className("js-toggle"));
+        input.sendKeys("\n haleakala \n");
+
+        driver.get("https://www.nps.gov/hale/index.htm");
+
+        WebElement moreButton = driver.findElement(
+                By.id("anch_20"));
+        moreButton.click();
+
+        WebElement planVisit = driver.findElement(
+                By.xpath("/html/body/div[11]/div[3]/div/div[2]/div[1]/h1"));
+
+        Assert.assertEquals(planVisit.getText(), "Plan Your Visit");
+
     }
 
     @AfterMethod
