@@ -41,7 +41,7 @@ public class GroupJavaBearsTest {
     }
 
     @Test
-    public void testAnastasiiaPotapenko() throws InterruptedException {
+    public void testAnastasiiaPotapenko() {
         driver.get("https://www.nps.gov/findapark/index.htm");
 
         WebElement searchIconButton = driver.findElement(By.xpath("//button[@class = 'multiselect dropdown-toggle btn btn-default']"));
@@ -51,7 +51,6 @@ public class GroupJavaBearsTest {
         WebElement searchResult = driver.findElement(By.xpath("//li//label[text() = ' Yellowstone National Park']"));
         searchResult.click();
         Assert.assertTrue(driver.findElement(By.xpath("//a[text() = 'Yellowstone' and @class = 'Hero-title ']")).isDisplayed());
-        Thread.sleep(6000);
     }
 
     @Test
