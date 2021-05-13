@@ -17,6 +17,7 @@ public class DariaAltukhovaTest {
     }
 
     private WebDriver driver;
+    final String mainURL = "https://www.edcast.com/";
     final String demoUrl = "https://www.edcast.com/corp/request-a-demo/";
 
     @BeforeMethod
@@ -25,44 +26,37 @@ public class DariaAltukhovaTest {
     }
 
     @Test
-    public void testDariaAltukhovaOpenDemoFromPage() throws InterruptedException {
-        driver.get("https://www.edcast.com/");
+    public void testDariaAltukhovaOpenDemoFromPage()  {
+        driver.get(mainURL);
 
         WebElement productButton = driver.findElement(By.id("menu-item-442"));
         productButton.click();
 
         WebElement dropdownEdCastXP = driver.findElement(By.id("menu-item-46"));
         dropdownEdCastXP.click();
-        Thread.sleep(3000);
 
         WebElement requestDemoButton = driver.findElement(By.className("fl-button-text"));
         requestDemoButton.click();
-        Thread.sleep(2000);
 
         Assert.assertEquals(driver.getCurrentUrl(), demoUrl);
     }
 
     @Test
-    public void testDariaAltukhovaOpenDemoFromMenu() throws InterruptedException {
-        driver.get("https://www.edcast.com/");
+    public void testDariaAltukhovaOpenDemoFromMenu()  {
+        driver.get(mainURL);
         WebElement demoHeaderButton = driver.findElement(By.id("menu-item-6658"));
         demoHeaderButton.click();
-        Thread.sleep(2000);
 
         Assert.assertEquals(driver.getCurrentUrl(), demoUrl);
-        driver.quit();
     }
 
     @Test
-    public void testDariaAltukhovaDemoVideoButton() throws InterruptedException {
-        driver.navigate().to("https://www.edcast.com/");
+    public void testDariaAltukhovaDemoVideoButton()  {
+        driver.get(mainURL);
         WebElement watchEdcastDemoVideoButton = driver.findElement(By.className("fl-button"));
         watchEdcastDemoVideoButton.click();
-        Thread.sleep(2000);
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://go.edcast.com/l/139221/2021-03-31/2m9x9x");
-
-        driver.quit();
     }
 
     @AfterMethod
@@ -70,4 +64,3 @@ public class DariaAltukhovaTest {
         driver.quit();
     }
 }
-
