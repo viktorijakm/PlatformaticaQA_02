@@ -150,12 +150,6 @@ public class GroupBreakingBadJavaTest {
     @Test
     public void testViktoriaKPark() throws InterruptedException {
 
-        WebDriverManager.chromedriver().setup();
-
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
-
         driver.get("https://www.nps.gov/index.htm");
 
         WebElement input = driver.findElement(
