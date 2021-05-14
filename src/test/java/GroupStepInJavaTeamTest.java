@@ -9,6 +9,8 @@ import org.testng.annotations.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertEquals;
+
 public class GroupStepInJavaTeamTest {
 
     private WebDriver driver;
@@ -114,6 +116,15 @@ public class GroupStepInJavaTeamTest {
         WebElement result = driver.findElement(By.xpath("//h1[contains(text(),'Dresses')]"));
         Assert.assertEquals(result.getText(), "Dresses");
         Thread.sleep(2000);
+    }
+
+    @Test
+    public void testEvgeniyaPiskunova() {
+        driver.get("https://www.teamunify.com/team/recccvscdhost/page/home");
+        driver.findElement(By.xpath("//div[@id='menuBar']//a")).click();
+        WebElement searchResult = driver.findElement(By.xpath("//h1[contains(text(),'Welcome Back Otters!')]"));
+        String searchResultText = searchResult.getText();
+        assertEquals(searchResultText, "Welcome Back Otters!");
     }
 
     @Test
