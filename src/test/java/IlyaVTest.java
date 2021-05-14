@@ -4,9 +4,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class IlyaVodnevTest {
+public class IlyaVTest {
     @BeforeClass
     public void beforeClass() {
 
@@ -30,10 +31,14 @@ public class IlyaVodnevTest {
         input.sendKeys("Екатеринбург");
         Thread.sleep(1000);
         input.sendKeys(Keys.ENTER);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         WebElement twoWeeks = driver.findElement(By.xpath("/html/body/section/nav/div/ul/li[6]/a"));
         twoWeeks.click();
+        Thread.sleep(1000);
+
+        WebElement heading = driver.findElement(By.xpath("/html/body/section/div[2]/div/div[1]/div/div[1]/div/h1"));
+        Assert.assertEquals(heading.getText(), "Погода в Екатеринбурге на две недели");
     }
 
     @AfterMethod
