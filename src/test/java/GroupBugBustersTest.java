@@ -88,7 +88,8 @@ public class GroupBugBustersTest {
 
     @Test
     public void testRomanB() throws InterruptedException {
-
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
         driver.get("https://www.homedepot.com/");
 
         WebElement input = driver.findElement(By.id("headerSearch"));
