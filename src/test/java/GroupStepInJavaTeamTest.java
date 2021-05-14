@@ -76,6 +76,21 @@ public class GroupStepInJavaTeamTest {
     }
 
     @Test
+    public void testVladVysotski() throws InterruptedException {
+
+        driver.get("https://www.paypal.com/");
+        driver.manage().window().maximize();
+        Thread.sleep(500);
+
+        WebElement button = driver.findElement(By.xpath("//*[@id='signup-button']"));
+        button.click();
+        Thread.sleep(500);
+
+        String text = driver.findElement(By.xpath("//*[@id=\"main\"]/section/div/div/h1")).getText();
+        Assert.assertEquals(text,"PayPal is a secure, easy way to pay and get paid - sign up for free");
+    }
+
+    @Test
     public void testHaidukLibrary() {
         driver.get("https://www.merriam-webster.com/");
         driver.findElement(By.id("s-term")).sendKeys("anything");
