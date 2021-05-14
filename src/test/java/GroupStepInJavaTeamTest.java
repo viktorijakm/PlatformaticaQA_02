@@ -39,15 +39,16 @@ public class GroupStepInJavaTeamTest {
 
     @Test
     public void testMarianaLuchynets () throws InterruptedException {
+
         driver.get("https://www.cvs.com/");
-        driver.findElement(By.xpath("//a[contains(text(),'Check testing options')]")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("//strong[contains(text(),'Get COVID-19 vaccine updates from the CDC')]")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("//a[contains(text(),'Possible side effects')]")).click();
-        Thread.sleep(2000);
-        WebElement result = driver.findElement(By.xpath("//div[contains(text(),'To reduce pain and discomfort where you got the shot')]"));
-        Assert.assertEquals(result.getText(), "To reduce pain and discomfort where you got the shot");
+        WebElement сheckTestingOptionsButton = driver.findElement(By.xpath("//a[contains(text(),'Check testing options')]"));
+        сheckTestingOptionsButton.click();
+        WebElement updatesFromCdcArrow = driver.findElement(By.xpath("//strong[contains(text(),'Get COVID-19 vaccine updates from the CDC')]"));
+        updatesFromCdcArrow.click();
+        WebElement possibleSideEffectsListItem = driver.findElement(By.xpath("//a[contains(text(),'Possible side effects')]"));
+        possibleSideEffectsListItem.click();
+        WebElement possibleSideEffectsText = driver.findElement(By.xpath("//div[contains(text(),'To reduce pain and discomfort where you got the shot')]"));
+        Assert.assertEquals(possibleSideEffectsText.getText(), "To reduce pain and discomfort where you got the shot");
     }
 
     @Test
