@@ -182,6 +182,19 @@ public class GroupBugBustersTest {
         Assert.assertEquals(addressFull.getText(), "11 Washington St., Seattle, WA, 56043");
     }
 
+    @Test
+    public void testBzhumanova() {
+        driver.get("https://www.verywellhealth.com/");
+
+        driver.findElement(By.id("header-search-button_1-0")).click();
+        WebElement searchInput = driver.findElement(By.id("search-input"));
+        searchInput.sendKeys("acne\n");
+
+        WebElement featureBlockFinder = driver.findElement(By.xpath("/html/body/main/div[1]/section/div[2]/ul/li[1]"));
+        WebElement featureTitleFinder = featureBlockFinder.findElement(By.className("block__title"));
+        Assert.assertEquals(featureTitleFinder.getText(), "Tweens - Growth and Development");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
