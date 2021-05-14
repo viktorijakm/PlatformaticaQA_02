@@ -39,6 +39,19 @@ public class GroupStepInJavaTeamTest {
     }
 
     @Test
+    public void testMarianaLuchynets () throws InterruptedException {
+        driver.get("https://www.cvs.com/");
+        driver.findElement(By.xpath("//a[contains(text(),'Check testing options')]")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//strong[contains(text(),'Get COVID-19 vaccine updates from the CDC')]")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//a[contains(text(),'Possible side effects')]")).click();
+        Thread.sleep(2000);
+        WebElement result = driver.findElement(By.xpath("//div[contains(text(),'To reduce pain and discomfort where you got the shot')]"));
+        Assert.assertEquals(result.getText(), "To reduce pain and discomfort where you got the shot");
+    }
+
+    @Test
     public void testVitalyZverev() {
 
         String value = "Selenium";
@@ -61,6 +74,21 @@ public class GroupStepInJavaTeamTest {
         driver.findElement(By.name("submit_search")).click();
         List<WebElement> elementList = driver.findElements(By.xpath("//ul[contains(@class, 'product_list')]/li"));
         Assert.assertEquals(elementList.size(), 7);
+    }
+
+    @Test
+    public void testVladVysotski() throws InterruptedException {
+
+        driver.get("https://www.paypal.com/");
+        driver.manage().window().maximize();
+        Thread.sleep(500);
+
+        WebElement button = driver.findElement(By.xpath("//*[@id='signup-button']"));
+        button.click();
+        Thread.sleep(500);
+
+        String text = driver.findElement(By.xpath("//*[@id=\"main\"]/section/div/div/h1")).getText();
+        Assert.assertEquals(text,"PayPal is a secure, easy way to pay and get paid - sign up for free");
     }
 
     @Test
@@ -89,59 +117,76 @@ public class GroupStepInJavaTeamTest {
     }
 
     @Test
+    public void testVitaliiDmitrenko() {
+
+        driver.get("https://www.gismeteo.ua/weather-kharkiv-5053/");
+        WebElement tenDaysButton = driver.findElement(By.xpath("//a[@href='/weather-kharkiv-5053/10-days/']"));
+        tenDaysButton.click();
+
+        WebElement tenDaysTitle = driver.findElement(By.xpath("//div[@class='pageinfo_title index-h1']//h1"));
+        Assert.assertEquals(tenDaysTitle.getText(),"Погода в Харькове на 10 дней");
+
+        WebElement monthButton = driver.findElement(By.xpath("//a[@href='/weather-kharkiv-5053/month/']"));
+        monthButton.click();
+
+        WebElement monthTitle = driver.findElement(By.xpath("//div[@class='pageinfo_title index-h1']//h1"));
+        Assert.assertEquals(monthTitle.getText(),"Погода в Харькове на месяц");
+    }
+
+    @Test
     public void testNataliaBoiko() throws InterruptedException {
-            driver.get("https://akniga.org/");
-            List<WebElement> listOfAllLinks = driver.findElements(By.xpath("/html/body/main/div[3]/div[1]/div/a"));
-            Random random = new Random();
-            int NumberOfrandomCategory = random.nextInt(listOfAllLinks.size());
-            String NameOfCategory = listOfAllLinks.get(NumberOfrandomCategory).getText().toLowerCase();
-            listOfAllLinks.get(NumberOfrandomCategory).click();
-            if (driver.getCurrentUrl().contains("google")) {
-                driver.get(listOfAllLinks.get(NumberOfrandomCategory).getAttribute("href"));
-                Thread.sleep(500);
+        driver.get("https://akniga.org/");
+        List<WebElement> listOfAllLinks = driver.findElements(By.xpath("/html/body/main/div[3]/div[1]/div/a"));
+        Random random = new Random();
+        int NumberOfrandomCategory = random.nextInt(listOfAllLinks.size());
+        String NameOfCategory = listOfAllLinks.get(NumberOfrandomCategory).getText().toLowerCase();
+        listOfAllLinks.get(NumberOfrandomCategory).click();
+        if (driver.getCurrentUrl().contains("google")) {
+            driver.get(listOfAllLinks.get(NumberOfrandomCategory).getAttribute("href"));
+            Thread.sleep(500);
+        }
+        Assert.assertTrue(driver.findElement(By.tagName("h1")).getText().toLowerCase().contains(NameOfCategory));
+        driver.findElement(By.xpath("/html/body/main/div[1]/div[4]/div[1]/div/a[2]")).click();
+        Thread.sleep(1000);
+        List<WebElement> listOfResult = driver.findElements(By.className("content__main__articles--item"));
+        int Counter = 0;
+        for (WebElement el : listOfResult) {
+            int CurrentScore = 0;
+            try {
+                CurrentScore = Integer.parseInt(el.findElement(By.className("ls-vote-item-up")).getText());
+            } catch (Exception e) {
             }
-             Assert.assertTrue(driver.findElement(By.tagName("h1")).getText().toLowerCase().contains(NameOfCategory));
-            driver.findElement(By.xpath("/html/body/main/div[1]/div[4]/div[1]/div/a[2]")).click();
-            Thread.sleep(1000);
-            List<WebElement> listOfResult = driver.findElements(By.className("content__main__articles--item"));
-            int Counter = 0;
-            for (WebElement el : listOfResult) {
-                int CurrentScore = 0;
-                try {
-                    CurrentScore = Integer.parseInt(el.findElement(By.className("ls-vote-item-up")).getText());
-                } catch (Exception e) {
-                }
-                try {
-                    CurrentScore -= Integer.parseInt(el.findElement(By.className("ls-vote-item-down")).getText());
-                } catch (Exception e) {
-                }
-                if (Counter == 0) Counter = CurrentScore;
-                try {
-                    Assert.assertTrue(Counter >= CurrentScore);
-                } catch (AssertionError e) {
-                    System.out.println("Error: "+el.findElement(By.className("caption__article-main")).getText());
-                }
-                Counter = CurrentScore;
+            try {
+                CurrentScore -= Integer.parseInt(el.findElement(By.className("ls-vote-item-down")).getText());
+            } catch (Exception e) {
             }
-             driver.findElement(By.xpath("/html/body/main/div[1]/div[4]/div[1]/div/a[3]")).click();
-            Thread.sleep(1000);
-            listOfResult = driver.findElements(By.className("content__main__articles--item"));
-            Counter = 0;
-            for (WebElement el : listOfResult) {
-                String textComments = el.findElement(By.className("link__action--comment")).getText();
-                int CurrentScore = 0;
-                try {
-                    CurrentScore = Integer.parseInt(textComments.substring(0, textComments.indexOf(" ")));
-                } catch (Exception e) {
-                }
-                if (Counter == 0) Counter = CurrentScore;
-                try {
-                    Assert.assertTrue(Counter >= CurrentScore);
-                } catch (AssertionError e) {
-                    System.out.println("Error: "+el.findElement(By.className("caption__article-main")).getText());
-                }
-                Counter = CurrentScore;
+            if (Counter == 0) Counter = CurrentScore;
+            try {
+                Assert.assertTrue(Counter >= CurrentScore);
+            } catch (AssertionError e) {
+                System.out.println("Error: " + el.findElement(By.className("caption__article-main")).getText());
             }
+            Counter = CurrentScore;
+        }
+        driver.findElement(By.xpath("/html/body/main/div[1]/div[4]/div[1]/div/a[3]")).click();
+        Thread.sleep(1000);
+        listOfResult = driver.findElements(By.className("content__main__articles--item"));
+        Counter = 0;
+        for (WebElement el : listOfResult) {
+            String textComments = el.findElement(By.className("link__action--comment")).getText();
+            int CurrentScore = 0;
+            try {
+                CurrentScore = Integer.parseInt(textComments.substring(0, textComments.indexOf(" ")));
+            } catch (Exception e) {
+            }
+            if (Counter == 0) Counter = CurrentScore;
+            try {
+                Assert.assertTrue(Counter >= CurrentScore);
+            } catch (AssertionError e) {
+                System.out.println("Error: " + el.findElement(By.className("caption__article-main")).getText());
+            }
+            Counter = CurrentScore;
+        }
      }
 
     @AfterMethod
