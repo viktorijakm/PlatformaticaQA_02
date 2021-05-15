@@ -118,7 +118,6 @@ public class GroupBreakingBadJavaTest {
         Assert.assertEquals(clubName.getText(), "Gaithersburg - Copley Place");
     }
 
-
     @Test
     public void testAntonBrutTrip() throws InterruptedException {
         driver.get("https://www.nationalgeographic.com/");
