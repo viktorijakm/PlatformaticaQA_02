@@ -142,6 +142,15 @@ public class GroupStepInJavaTeamTest {
         Assert.assertEquals(monthTitle.getText(), "Погода в Харькове на месяц");
     }
 
+    @Test
+    public void testNettMax() {
+        driver.get("https://www.keyfood.com/");
+        WebElement input = driver.findElement(By.className("js-site-search-input"));
+        input.sendKeys("meat\n");
+        WebElement result = driver.findElement(By.xpath("//h1"));
+        Assert.assertEquals(result.getText(), "You Searched for \"MEAT\"");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
