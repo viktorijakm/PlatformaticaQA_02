@@ -5,11 +5,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-public class Utility {
+public abstract class Utility {
 
     private WebDriver driver;
 
-    public WebDriver getDriver() {
+    final WebDriver getDriver() {
         return driver;
     }
 
