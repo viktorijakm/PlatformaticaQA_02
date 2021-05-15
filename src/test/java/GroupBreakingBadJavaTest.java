@@ -149,7 +149,6 @@ public class GroupBreakingBadJavaTest {
     @Test
     public void testViktoriaKPark() {
         driver.get("https://www.nps.gov/index.htm");
-
         WebElement input = driver.findElement(
                 By.className("js-toggle"));
         input.sendKeys("\n haleakala \n");
