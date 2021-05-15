@@ -49,7 +49,6 @@ public class GroupBugBustersTest {
         Thread.sleep(3000);
         WebElement price = driver.findElement(By.xpath("//label[@id='oneBitcoin']"));
         Assert.assertEquals(price.getText(), driver.getTitle().substring(1, 9));
-        Thread.sleep(3000);
     }
 
     @Test
