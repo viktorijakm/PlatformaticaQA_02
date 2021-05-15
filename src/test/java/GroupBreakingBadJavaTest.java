@@ -165,7 +165,6 @@ public class GroupBreakingBadJavaTest {
                 By.xpath("/html/body/div[11]/div[3]/div/div[2]/div[1]/h1"));
 
         Assert.assertEquals(planVisit.getText(), "Plan Your Visit");
-
     }
 
     @AfterMethod
