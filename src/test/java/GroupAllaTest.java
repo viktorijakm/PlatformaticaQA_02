@@ -92,6 +92,21 @@ public class GroupAllaTest {
                 "Неверное имя пользователя или пароль");
     }
 
+    @Test
+    public void vladimirMiskoTest() {
+
+        driver.get("https://www.google.com/");
+
+        WebElement input = driver.findElement(By.className("gLFyf"));
+
+        input.sendKeys("tut.by\n");
+
+        WebElement result = driver.findElement(
+                By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/div/div[1]/a/h3"));
+
+        Assert.assertEquals(result.getText(), "Белорусский портал TUT.BY. Новости Беларуси и мира");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();

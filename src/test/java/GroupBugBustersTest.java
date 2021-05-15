@@ -183,16 +183,16 @@ public class GroupBugBustersTest {
     }
 
     @Test
-    public void testValeriiSarukhanov() {
+    public void testBzhumanova() {
+        driver.get("https://www.verywellhealth.com/");
 
-        driver.get("https://www.homedepot.com/");
+        driver.findElement(By.id("header-search-button_1-0")).click();
+        WebElement searchInput = driver.findElement(By.id("search-input"));
+        searchInput.sendKeys("acne\n");
 
-        WebElement input = driver.findElement(By.id("headerSearch"));
-        input.sendKeys("rose\n");
-
-        WebElement finder = driver.findElement(By.xpath("//span[@class ='product-pod__title__product']"));
-
-        Assert.assertTrue(finder.getText().toLowerCase().contains("rose"));
+        WebElement featureBlockFinder = driver.findElement(By.xpath("/html/body/main/div[1]/section/div[2]/ul/li[1]"));
+        WebElement featureTitleFinder = featureBlockFinder.findElement(By.className("block__title"));
+        Assert.assertEquals(featureTitleFinder.getText(), "Tweens - Growth and Development");
     }
 
     @AfterMethod
