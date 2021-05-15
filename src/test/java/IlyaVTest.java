@@ -8,23 +8,20 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class IlyaVTest {
+    private WebDriver driver;
+
     @BeforeClass
     public void beforeClass() {
-
         WebDriverManager.chromedriver().setup();
     }
 
-    private WebDriver driver;
-
     @BeforeMethod
     public void beforeTest() {
-
         driver = new ChromeDriver();
     }
 
     @Test
     public void test() throws InterruptedException {
-
         driver.get("https://www.gismeteo.ru");
 
         WebElement input = driver.findElement(By.className("search_input"));
@@ -43,7 +40,6 @@ public class IlyaVTest {
 
     @AfterMethod
     public void afterTest() {
-
         driver.quit();
     }
 }
