@@ -9,8 +9,6 @@ import org.testng.annotations.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.assertEquals;
-
 public class GroupStepInJavaTeamTest {
 
     private WebDriver driver;
@@ -40,11 +38,11 @@ public class GroupStepInJavaTeamTest {
     }
 
     @Test
-    public void testMarianaLuchynets () throws InterruptedException {
+    public void testMarianaLuchynets() {
 
         driver.get("https://www.cvs.com/");
-        WebElement сheckTestingOptionsButton = driver.findElement(By.xpath("//a[contains(text(),'Check testing options')]"));
-        сheckTestingOptionsButton.click();
+        WebElement checkTestingOptionsButton = driver.findElement(By.xpath("//a[contains(text(),'Check testing options')]"));
+        checkTestingOptionsButton.click();
         WebElement updatesFromCdcArrow = driver.findElement(By.xpath("//strong[contains(text(),'Get COVID-19 vaccine updates from the CDC')]"));
         updatesFromCdcArrow.click();
         WebElement possibleSideEffectsListItem = driver.findElement(By.xpath("//a[contains(text(),'Possible side effects')]"));
@@ -90,7 +88,7 @@ public class GroupStepInJavaTeamTest {
         Thread.sleep(500);
 
         String text = driver.findElement(By.xpath("//*[@id=\"main\"]/section/div/div/h1")).getText();
-        Assert.assertEquals(text,"PayPal is a secure, easy way to pay and get paid - sign up for free");
+        Assert.assertEquals(text, "PayPal is a secure, easy way to pay and get paid - sign up for free");
     }
 
     @Test
@@ -124,7 +122,7 @@ public class GroupStepInJavaTeamTest {
         driver.findElement(By.xpath("//div[@id='menuBar']//a")).click();
         WebElement searchResult = driver.findElement(By.xpath("//h1[contains(text(),'Welcome Back Otters!')]"));
         String searchResultText = searchResult.getText();
-        assertEquals(searchResultText, "Welcome Back Otters!");
+        Assert.assertEquals(searchResultText, "Welcome Back Otters!");
     }
 
     @Test
@@ -135,13 +133,13 @@ public class GroupStepInJavaTeamTest {
         tenDaysButton.click();
 
         WebElement tenDaysTitle = driver.findElement(By.xpath("//div[@class='pageinfo_title index-h1']//h1"));
-        Assert.assertEquals(tenDaysTitle.getText(),"Погода в Харькове на 10 дней");
+        Assert.assertEquals(tenDaysTitle.getText(), "Погода в Харькове на 10 дней");
 
         WebElement monthButton = driver.findElement(By.xpath("//a[@href='/weather-kharkiv-5053/month/']"));
         monthButton.click();
 
         WebElement monthTitle = driver.findElement(By.xpath("//div[@class='pageinfo_title index-h1']//h1"));
-        Assert.assertEquals(monthTitle.getText(),"Погода в Харькове на месяц");
+        Assert.assertEquals(monthTitle.getText(), "Погода в Харькове на месяц");
     }
 
     @AfterMethod
