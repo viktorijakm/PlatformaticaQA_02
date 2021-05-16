@@ -1,29 +1,11 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class GroupRunSuccess {
+public class GroupRunSuccess extends Utility {
 
-    @BeforeClass
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    private WebDriver driver;
-
-    @BeforeMethod
-    public void beforeTest() {
-        driver = new ChromeDriver();
-    }
-
-    @Test
+       @Test
     public void testDimaStepanenko() throws InterruptedException {
         driver.get("http://demowebshop.tricentis.com/");
 
@@ -42,12 +24,6 @@ public class GroupRunSuccess {
         Thread.sleep(2000);
         WebElement total = driver.findElement(
                 By.xpath("//td[@class=\"subtotal nobr end\"]/span[@class=\"product-subtotal\"]"));
-        //Assert.assertEquals(total.getText().toString(), "48.00");
         Assert.assertEquals(total.getText(), String.format("%.2f", 48.0));
-    }
-
-    @AfterMethod
-    public void afterTest() {
-        driver.quit();
     }
 }
