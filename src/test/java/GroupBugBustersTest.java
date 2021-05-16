@@ -1,28 +1,11 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class GroupBugBustersTest {
-
-    private WebDriver driver;
-
-    @BeforeClass
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeMethod
-    public void beforeTest() {
-        driver = new ChromeDriver();
-    }
+public class GroupBugBustersTest extends Utility{
 
     @Test
     public void testMK() throws InterruptedException {
@@ -84,7 +67,6 @@ public class GroupBugBustersTest {
         Assert.assertTrue(result, "Logo is here");
     }
 
-
     @Test
     public void testRomanB() throws InterruptedException {
         driver.manage().deleteAllCookies();
@@ -99,7 +81,6 @@ public class GroupBugBustersTest {
 
         Assert.assertTrue(finder.getText().toLowerCase().contains("aluminum angle"));
         Thread.sleep(1000);
-
         }
     
   @Test
@@ -115,7 +96,6 @@ public class GroupBugBustersTest {
 
         WebElement AppleStock = driver.findElement(By.className("symbol-page-header__name"));
         Assert.assertEquals(AppleStock.getText(), "Apple Inc. Common Stock (AAPL)");
-
     }
 
     @Test
@@ -206,10 +186,4 @@ public class GroupBugBustersTest {
 
         Assert.assertTrue(finder.getText().toLowerCase().contains("rose"));
     }
-
-    @AfterMethod
-    public void afterTest() {
-        driver.quit();
-    }
-
 }
