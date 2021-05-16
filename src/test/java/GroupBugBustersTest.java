@@ -10,19 +10,7 @@ import org.testng.annotations.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class GroupBugBustersTest {
-
-    private WebDriver driver;
-
-    @BeforeClass
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeMethod
-    public void beforeTest() {
-        driver = new ChromeDriver();
-    }
+public class GroupBugBustersTest extends Utility{
 
     @Test
     public void testMK() throws InterruptedException {
@@ -207,10 +195,4 @@ public class GroupBugBustersTest {
 
         Assert.assertTrue(finder.getText().toLowerCase().contains("rose"));
     }
-
-    @AfterMethod
-    public void afterTest() {
-        driver.quit();
-    }
-
 }
