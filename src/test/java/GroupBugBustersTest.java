@@ -194,6 +194,19 @@ public class GroupBugBustersTest {
         Assert.assertEquals(featureTitleFinder.getText(), "Tweens - Growth and Development");
     }
 
+    @Test
+    public void testValeriiSarukhanov() {
+
+        driver.get("https://www.homedepot.com/");
+
+        WebElement input = driver.findElement(By.id("headerSearch"));
+        input.sendKeys("rose\n");
+
+        WebElement finder = driver.findElement(By.xpath("//span[@class ='product-pod__title__product']"));
+
+        Assert.assertTrue(finder.getText().toLowerCase().contains("rose"));
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
