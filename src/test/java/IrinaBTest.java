@@ -9,8 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ValeriiSarukhanovTest {
-
+public class IrinaBTest {
     @BeforeClass
     public void before() {
         WebDriverManager.chromedriver().setup();
@@ -19,25 +18,21 @@ public class ValeriiSarukhanovTest {
     private WebDriver driver;
 
     @BeforeMethod
-    public void beforeMethod() {
+    public void beforeTest() {
         driver = new ChromeDriver();
     }
 
     @Test
-    public void test() {
+    public void testIrinaB(){
+        driver.get("http://www.99-bottles-of-beer.net/");
 
-        driver.get("https://www.homedepot.com/");
+        WebElement actualResult = driver.findElement(By.xpath("//div[@id='main']/h2"));
 
-        WebElement input = driver.findElement(By.id("headerSearch"));
-        input.sendKeys("rose\n");
-
-        WebElement finder = driver.findElement(By.xpath("//span[@class ='product-pod__title__product']"));
-
-        Assert.assertTrue(finder.getText().toLowerCase().contains("rose"));
+        Assert.assertEquals(actualResult.getText(), "Welcome to 99 Bottles of Beer");
     }
 
     @AfterMethod
-    public void afterMethod() {
+    public void afterTest() {
         driver.quit();
     }
 }

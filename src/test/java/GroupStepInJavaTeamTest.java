@@ -38,6 +38,20 @@ public class GroupStepInJavaTeamTest {
     }
 
     @Test
+    public void testMarianaLuchynets() {
+
+        driver.get("https://www.cvs.com/");
+        WebElement checkTestingOptionsButton = driver.findElement(By.xpath("//a[contains(text(),'Check testing options')]"));
+        checkTestingOptionsButton.click();
+        WebElement updatesFromCdcArrow = driver.findElement(By.xpath("//strong[contains(text(),'Get COVID-19 vaccine updates from the CDC')]"));
+        updatesFromCdcArrow.click();
+        WebElement possibleSideEffectsListItem = driver.findElement(By.xpath("//a[contains(text(),'Possible side effects')]"));
+        possibleSideEffectsListItem.click();
+        WebElement possibleSideEffectsText = driver.findElement(By.xpath("//div[contains(text(),'To reduce pain and discomfort where you got the shot')]"));
+        Assert.assertEquals(possibleSideEffectsText.getText(), "To reduce pain and discomfort where you got the shot");
+    }
+
+    @Test
     public void testVitalyZverev() {
 
         String value = "Selenium";
@@ -63,6 +77,21 @@ public class GroupStepInJavaTeamTest {
     }
 
     @Test
+    public void testVladVysotski() throws InterruptedException {
+
+        driver.get("https://www.paypal.com/");
+        driver.manage().window().maximize();
+        Thread.sleep(500);
+
+        WebElement button = driver.findElement(By.xpath("//*[@id='signup-button']"));
+        button.click();
+        Thread.sleep(500);
+
+        String text = driver.findElement(By.xpath("//*[@id=\"main\"]/section/div/div/h1")).getText();
+        Assert.assertEquals(text, "PayPal is a secure, easy way to pay and get paid - sign up for free");
+    }
+
+    @Test
     public void testHaidukLibrary() {
         driver.get("https://www.merriam-webster.com/");
         driver.findElement(By.id("s-term")).sendKeys("anything");
@@ -85,6 +114,41 @@ public class GroupStepInJavaTeamTest {
         WebElement result = driver.findElement(By.xpath("//h1[contains(text(),'Dresses')]"));
         Assert.assertEquals(result.getText(), "Dresses");
         Thread.sleep(2000);
+    }
+
+    @Test
+    public void testEvgeniyaPiskunova() {
+        driver.get("https://www.teamunify.com/team/recccvscdhost/page/home");
+        driver.findElement(By.xpath("//div[@id='menuBar']//a")).click();
+        WebElement searchResult = driver.findElement(By.xpath("//h1[contains(text(),'Welcome Back Otters!')]"));
+        String searchResultText = searchResult.getText();
+        Assert.assertEquals(searchResultText, "Welcome Back Otters!");
+    }
+
+    @Test
+    public void testVitaliiDmitrenko() {
+
+        driver.get("https://www.gismeteo.ua/weather-kharkiv-5053/");
+        WebElement tenDaysButton = driver.findElement(By.xpath("//a[@href='/weather-kharkiv-5053/10-days/']"));
+        tenDaysButton.click();
+
+        WebElement tenDaysTitle = driver.findElement(By.xpath("//div[@class='pageinfo_title index-h1']//h1"));
+        Assert.assertEquals(tenDaysTitle.getText(), "Погода в Харькове на 10 дней");
+
+        WebElement monthButton = driver.findElement(By.xpath("//a[@href='/weather-kharkiv-5053/month/']"));
+        monthButton.click();
+
+        WebElement monthTitle = driver.findElement(By.xpath("//div[@class='pageinfo_title index-h1']//h1"));
+        Assert.assertEquals(monthTitle.getText(), "Погода в Харькове на месяц");
+    }
+
+    @Test
+    public void testNettMax() {
+        driver.get("https://www.keyfood.com/");
+        WebElement input = driver.findElement(By.className("js-site-search-input"));
+        input.sendKeys("meat\n");
+        WebElement result = driver.findElement(By.xpath("//h1"));
+        Assert.assertEquals(result.getText(), "You Searched for \"MEAT\"");
     }
 
     @AfterMethod

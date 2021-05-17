@@ -41,7 +41,7 @@ public class GroupJavaBearsTest {
     }
 
     @Test
-    public void testAnastasiiaPotapenko() throws InterruptedException {
+    public void testAnastasiiaPotapenko() {
         driver.get("https://www.nps.gov/findapark/index.htm");
 
         WebElement searchIconButton = driver.findElement(By.xpath("//button[@class = 'multiselect dropdown-toggle btn btn-default']"));
@@ -51,19 +51,17 @@ public class GroupJavaBearsTest {
         WebElement searchResult = driver.findElement(By.xpath("//li//label[text() = ' Yellowstone National Park']"));
         searchResult.click();
         Assert.assertTrue(driver.findElement(By.xpath("//a[text() = 'Yellowstone' and @class = 'Hero-title ']")).isDisplayed());
-        Thread.sleep(6000);
     }
 
     @Test
-    public void testAlexMack() throws InterruptedException {
-    driver.get("https://www.fandango.com/");
+    public void testAlexMack() {
+        driver.get("https://www.fandango.com/");
 
-    WebElement searchField = driver.findElement(By.className("fan-input"));
-    searchField.sendKeys("nobody\n");
-    WebElement movie = driver.findElement(By.className("results-thumb"));
-    movie.click();
-    Assert.assertTrue(driver.findElement(By.className("js-movie-video-link")).isDisplayed());
-    Thread.sleep(2000);
+        WebElement searchField = driver.findElement(By.className("fan-input"));
+        searchField.sendKeys("nobody\n");
+        WebElement movie = driver.findElement(By.className("results-thumb"));
+        movie.click();
+        Assert.assertTrue(driver.findElement(By.className("js-movie-video-link")).isDisplayed());
     }
 
     @AfterMethod
