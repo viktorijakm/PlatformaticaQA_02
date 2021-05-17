@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class IlyaVTest {
+
     private WebDriver driver;
 
     @BeforeClass
