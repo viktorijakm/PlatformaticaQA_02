@@ -107,8 +107,27 @@ public class GroupAllaTest {
         Assert.assertEquals(result.getText(), "Белорусский портал TUT.BY. Новости Беларуси и мира");
     }
 
+    @Test
+    public  void juliaKnyazevaTest() throws InterruptedException {
+
+        driver.get("https://software-testing.ru/");
+
+        WebElement input = driver.findElement(By.xpath("//a[@href='/library']"));
+        input.click();
+        Thread.sleep(1000);
+
+        WebElement result = driver.findElement(By.xpath("//a[@href='/library/testing/" +
+                "testing-for-beginners?layout=default']"));
+        Assert.assertEquals(result.getText(), "Начинающему тестировщику");
+        Thread.sleep(1000);
+
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.quit();
     }
+
+
+
 }
