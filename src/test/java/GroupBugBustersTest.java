@@ -1,5 +1,4 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -108,11 +107,6 @@ public class GroupBugBustersTest extends Utility{
         Assert.assertEquals(lambo.getText(),"AVENTADOR SVJ");
 
     }
-    
-    private void newClick(WebElement checkBoxValue1) {
-        JavascriptExecutor executor1 = (JavascriptExecutor) driver;
-        executor1.executeScript("arguments[0].click();", checkBoxValue1);
-    }
 
     @Test
     public void testYevgeniyaRudenko() throws InterruptedException {
@@ -126,19 +120,19 @@ public class GroupBugBustersTest extends Utility{
         Thread.sleep(1000);
 
         WebElement genderFemale = driver.findElement(By.xpath("//input[@name='gender'][@value='Female']"));
-        newClick(genderFemale);
+        newClick(driver, genderFemale);
 
         WebElement mobilePhone = driver.findElement(By.xpath("//input[@id='userNumber']"));
         mobilePhone.sendKeys("0123456789");
 
         WebElement checkBoxValue1 = driver.findElement(By.xpath("//input[@type='checkbox'][@value=1]"));
-        newClick(checkBoxValue1);
+        newClick(driver, checkBoxValue1);
         Thread.sleep(2000);
 
         WebElement address = driver.findElement(By.xpath("//textarea[@id='currentAddress']"));
         address.sendKeys("11 Washington St., Seattle, WA, 56043");
 
-        newClick(driver.findElement(By.id("submit")));
+        newClick(driver, driver.findElement(By.id("submit")));
         Thread.sleep(2000);
 
 
