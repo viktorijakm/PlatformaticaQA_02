@@ -3,7 +3,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class GroupRunSuccess extends Utility {
+public class GroupRunSuccessTest extends Utility {
 
        @Test
     public void testDimaStepanenko() throws InterruptedException {
