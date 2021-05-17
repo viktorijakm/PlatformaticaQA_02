@@ -36,8 +36,7 @@ public class UmaBenzTest {
         Assert.assertEquals(pageTitle, "Evening/Weekend Programs");
     }
 
-     @AfterMethod
-     public void afterTest() { driver.quit();
+    @AfterMethod
+    public void afterTest() { driver.quit();
     }
 }
-
